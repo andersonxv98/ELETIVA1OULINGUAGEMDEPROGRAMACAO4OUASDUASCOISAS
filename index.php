@@ -5,24 +5,86 @@
     <meta name="zika" author="ANDISU" >
     <meta name="viewport" charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
-    <link rel=
     <script>
-       
+
+
     </script>
     </head>
-    <body>
-        <header>
-            <nav>
+    <header>
+        <nav>
+            <ul>
+                <li>Item X</li>
+                <li>Item Y</li>
+                <li>Item Z</li>
+            </ul>
+            <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ol>
+        </nav>
+    </header>
 
-            </nav>
-        </header>
-        <main>
-            <content>
+    <main>
+        <section>
+            <h1>Título de Nível 1</h1>
+            <h2>Titulo de Nível 2</h2>
+            <div>
+                <p>Este é um texto</p>
+                <p>Este é um <span class="texto-vermelho">
+                                bloco de conteúdo
+                              </span>
+                </p>
+            </div>
+            <hr/>
 
-            </content>
-        </main>
-        <footer>
-            
-        </footer>    
+            <table>
+                <caption>Tabela</caption>
+                <thead>
+                <tr>
+                    <th colspan="2">TABELA EXEMPLO</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Valor 1</td>
+                    <td>VAlor 2</td>
+                </tr>
+                <tr>
+                    <td>Valor 3</td>
+                    <td>Valor 4</td>
+                </tr>
+                </tbody>
+                <tfooter>
+                    <tr>
+                        <td colspan="2">Rodapé da Tabela</td>
+                    </tr>
+                </tfooter>
+            </table>
+
+            <form action="" method="">
+                <label for="nome">Insira seu nome:</label>
+                <input type="text" name="nome" id="nome"
+                       class="estilo-campos"/>
+                <label for="email">Insira seu email:</label>
+                <input type="email" name="email" id="email"
+                       class="estilo-campos"/>
+                <label for="descricao">Fale sobre você:</label>
+                <textarea name="descricao" id="descricao"></textarea>
+                <label for="estado">Informe seu estado:</label>
+                <select name="estado" id="estado">
+                    <option value="SP">São Paulo</option>
+                    <option value="PR">Paraná</option>
+                </select>
+            </form>
+
+        </section>
+
+
+    </main>
+
+    <footer>
+
+    </footer>
     </body>
 </html>
