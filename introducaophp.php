@@ -10,7 +10,7 @@
      <?php echo "<p>".date('d/m/y')."</p>"; //o processamento do echo é + rapido comparado com o processamento
      // do print
      $x = "Isso é uma váriavel";
-     $y = 3 //isso é um numero;
+     $y = 3; //isso é um numero;
      echo x.y;
      ?>
  </h1>
