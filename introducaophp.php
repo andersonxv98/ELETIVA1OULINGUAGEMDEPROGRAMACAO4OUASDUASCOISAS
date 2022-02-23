@@ -11,7 +11,7 @@
      // do print
      $x = "Isso é uma váriavel";
      $y = 3; //isso é um numero;
-     echo x.y;
+     echo "$x.$y";
      ?>
  </h1>
 <body>
