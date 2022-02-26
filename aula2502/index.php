@@ -12,7 +12,7 @@
 </head>
 <body class="container">
 <h1>Exemplo de Envio de Formulario</h1>
-<form>
+<form method="post" action="resposta.php">
     <div class="row">
         <div class="col">
             <label for="valor1" class="label-control">informe o Valor 1</label>
@@ -26,7 +26,7 @@
     </div>
     <div class="row mt-5">
         <div class="col">
-            <button class="btn btn-succsess"> Enviar</button>
+            <button type="submit" class="btn bg-dark text-white"> Enviar</button>
         </div>
     </div>
 </form>
