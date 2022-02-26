@@ -24,6 +24,11 @@
         </div>
 
     </div>
+    <div class="row mt-5">
+        <div class="col">
+            <button class="btn btn-succsess"> Enviar</button>
+        </div>
+    </div>
 </form>
 
 <!-- Optional JavaScript; choose one of the two! -->
