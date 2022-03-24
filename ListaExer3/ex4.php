@@ -40,7 +40,7 @@
     </div>
     <div class="row mt-5">
         <div class="col">
-            <button type="submit" class="btn bg-dark text-white"> Mostrar menor pro maior</button>
+            <button type="submit" class="btn bg-dark text-white">Calcular Soma de todos os divisores</button>
         </div>
     </div>
 </form>
