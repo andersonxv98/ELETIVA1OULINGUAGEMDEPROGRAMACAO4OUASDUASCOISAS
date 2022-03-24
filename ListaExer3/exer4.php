@@ -20,7 +20,9 @@ function CalcularESOmarDiv($value){
        if($value % $i == 0){ 
        $soma = $soma + $i;
        }
+       
     }
+    return $soma;
 }
 
 
