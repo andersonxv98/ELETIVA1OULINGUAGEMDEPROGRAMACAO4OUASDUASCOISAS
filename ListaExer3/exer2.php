@@ -1,7 +1,7 @@
 <?php
 $vet_alunos = [];
 function Lernomes($vet_alunos){
-    sort($vet_alunos[SORT_STRING]);
+    sort($vet_alunos[SORT_LOCALE_STRING]);
 
     foreach ($vet_alunos as  $value) {
         echo $value;
