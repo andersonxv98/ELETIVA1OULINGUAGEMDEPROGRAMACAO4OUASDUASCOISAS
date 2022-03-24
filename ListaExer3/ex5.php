@@ -12,15 +12,15 @@
 </head>
 <body class="container">
 <h1>Exemplo de Envio de Formulario</h1>
-<form method="post" action="exer4.php">
+<form method="post" action="exer5.php">
     <div class="row">
         <div class="col">
             <label for="valor1" class="label-control">Insira posix_get_last_error</label>
-            <input type="number" name="valor1" id="valor1" class="form-control">
+            <input type="number" step="0.01" name="valor1" id="valor1" class="form-control">
         </div>
         <div class="col">
             <label for="valor2" class="label-control">Insiraa altura</label>
-            <input type="number" name="valor2" id="valor2" class="form-control">
+            <input type="number" step="0.01" name="valor2" id="valor2" class="form-control">
         </div>
       
 

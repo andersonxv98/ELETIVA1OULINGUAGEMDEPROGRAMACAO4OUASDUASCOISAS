@@ -1,7 +1,7 @@
 <?php
 
 function CalcularIMC($var1, $var2){
-    $imc = $var1 / $var2;
+    $imc = $var1 / ($var2 * $var2);
     switch ($imc) {
         case ($imc < 18.5):
             echo "Abaixo do peso";
