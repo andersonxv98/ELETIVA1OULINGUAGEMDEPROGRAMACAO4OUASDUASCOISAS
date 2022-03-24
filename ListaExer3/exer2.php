@@ -5,6 +5,7 @@ function Lernomes($vet_alunos){
 
     foreach ($vet_alunos as  $value) {
         echo $value;
+        echo " ";
     }
 
 }
