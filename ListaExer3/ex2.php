@@ -15,7 +15,7 @@
 <form method="post" action="exer2.php">
     <div class="row">
         <div class="col">
-            <label for="valor1" class="label-control">informe o Valor Do kilo</label>
+            <label for="valor1" class="label-control">Insira o nome</label>
             <input type="text" name="valor1" id="valor1" class="form-control">
         </div>
        
@@ -23,7 +23,7 @@
     </div>
     <div class="row mt-5">
         <div class="col">
-            <button type="submit" class="btn bg-dark text-white"> Enviar</button>
+            <button type="submit" class="btn bg-dark text-white"> Enviar Nome</button>
         </div>
     </div>
 </form>

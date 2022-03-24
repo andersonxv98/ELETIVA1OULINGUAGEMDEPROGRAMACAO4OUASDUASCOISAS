@@ -1,7 +1,5 @@
 <?php
 $vet_alunos = [];
-
-
 function Lernomes($vet_alunos){
     sort($vet_alunos[SORT_STRING]);
 
@@ -12,10 +10,9 @@ function Lernomes($vet_alunos){
 }
 
 $var1 = $_POST['valor1']; //valor kilo
-$var2 = $_POST['valor2']; //qtd consum
+array_push($vet_alunos, $var1);
 
-$result = $var1 * $var2;
-
-echo  "O Preço pago pelo consumo será de: ".$result." DILMAS";
-
+if (count($vet_alunos) >= 10){
+    Lernomes($vet_alunos);
+}
 ?>
