@@ -18,6 +18,42 @@
             <label for="valor1" class="label-control">Insira o nome</label>
             <input type="text" name="valor1" id="valor1" class="form-control">
         </div>
+        <div class="col">
+            <label for="valor2" class="label-control">Insira o nome</label>
+            <input type="text" name="valor2" id="valor2" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor3" class="label-control">Insira o nome</label>
+            <input type="text" name="valor3" id="valor3" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor4" class="label-control">Insira o nome</label>
+            <input type="text" name="valor4" id="valor4" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor5" class="label-control">Insira o nome</label>
+            <input type="text" name="valor5" id="valor5" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor6" class="label-control">Insira o nome</label>
+            <input type="text" name="valor6" id="valor6" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor7" class="label-control">Insira o nome</label>
+            <input type="text" name="valor7" id="valor7" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor8" class="label-control">Insira o nome</label>
+            <input type="text" name="valor8" id="valor8" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor9" class="label-control">Insira o nome</label>
+            <input type="text" name="valor9" id="valor9" class="form-control">
+        </div>
+        <div class="col">
+            <label for="valor10" class="label-control">Insira o nome</label>
+            <input type="text" name="valor10" id="valor10" class="form-control">
+        </div>
        
 
     </div>
