@@ -17,7 +17,8 @@ $var2 = $_POST['valor2'];
 array_push($vet_alunos, $var1, $var2);
 
 
- $menor =Lernomes($vet_alunos)
+ $menor =Lernomes($vet_alunos);
 
  echo "menor numero meu nobre é esse aqui: ".$menor;
+
 ?>
