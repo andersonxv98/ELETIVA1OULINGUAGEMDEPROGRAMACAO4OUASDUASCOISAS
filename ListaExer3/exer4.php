@@ -5,10 +5,10 @@ function Printar($vet_numeros){
     sort($vet_numeros);
 
     foreach ($vet_numeros as  $value) {
-        echo $value;
+       
         echo "<br>";
         $result = CalcularESOmarDiv($value);
-        echo "Soma de Todos os divisores do numero: ".$value." é :   ".$result;
+        echo "Soma de Todos os divisores do numero: ".$value."  Exceto ele mesmo é :   ".$result;
         echo "<br>";
     }
    
