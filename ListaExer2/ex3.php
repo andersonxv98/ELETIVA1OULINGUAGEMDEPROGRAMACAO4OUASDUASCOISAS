@@ -12,14 +12,14 @@
   </head>
   <body class="container">
     <h1>Exercício 1</h1>
-    <form action="exer1.php" method="post">
+    <form action="exer3.php" method="post">
       <div class="row">
         <?php
-          for ($i=1; $i<=10; $i++){
+          for ($i=1; $i<=20; $i++){
         ?>
           <div class="col">
             <label for="valor<?= $i ?>" class="label-control">
-              Informe o valor <?= $i ?>
+              Informe o valor de 0 a 10 <?= $i ?>
             </label>
             <input type="number" name="valor<?= $i ?>" 
               id="valor<?= $i ?>" class="form-control"/>
@@ -28,6 +28,14 @@
           }
         ?>
       </div>
+      <div class="col">
+            <label for="valorbuscado" class="label-control">
+              Informe o valor a ser buscado
+            </label>
+            <input type="number" name="valorbuscado" 
+              id="valorbuscado" class="form-control"/>
+          </div>
+
       <div class="row">
         <div class="col">
           <button class="btn btn-primary">Enviar</button>
