@@ -1,30 +1,4 @@
-Skip to content
-Search or jump to…
-Pulls
-Issues
-Marketplace
-Explore
- 
-@andersonxv98 
-vanessaborges2
-/
-EletivaI-LinguagemProgramacaoIV
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-EletivaI-LinguagemProgramacaoIV/Aula 3003/resposta.php
-@vanessaborges2
-vanessaborges2 Criação do Formulario
-Latest commit b2167dc in 5 hours
- History
- 1 contributor
-27 lines (22 sloc)  1.3 KB
+
    
 <!doctype html>
 <html lang="en">
@@ -39,13 +13,37 @@ Latest commit b2167dc in 5 hours
   <body>
     <h1>Sistema PHP</h1>
     <?php 
+        if($_POST){
         $email = $_POST['email'];
-        setcookie("usuario", $email, time() + (86400 * 1), "/");
-        echo "SEja BEm venindo: ".$_COOKIE['usuario'];
+        $senha = $_POST['senha'];
 
+      /*  setcookie("usuario", $email, time() + (86400 * 1), "/");
+        echo "SEja BEm venindo: ".$_COOKIE['usuario'];*/
 
+        session_start();
+            if(($email == "andisu@andisu.com") && ($senha==123)){
+                $_SESSION['usuario'] = $email;
+                $_SESSION['acesso'] = true;
+
+                echo "seja bem vindo usuario: ".$_SESSION['usuario'];
+                echo "<a href='sair.php'>SAIR</a>";
+
+            }
+            else{
+                header('Location: index.php');
+                exit;
+            }
+        }
+        else{
+            session_start();
+            if($_SESSION["acesso"] == false){
+                header('Location: index.php');
+                exit;
+
+            }
+        }
     ?>
-    
+
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
