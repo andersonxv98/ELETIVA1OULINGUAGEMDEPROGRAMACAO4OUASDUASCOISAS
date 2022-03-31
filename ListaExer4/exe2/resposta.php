@@ -13,56 +13,34 @@
   <body>
     <h1>Sistema PHP</h1>
     <?php 
-        if($_POST){
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $tempo_volta = $_POST['tempo_volta'];
-      /*  setcookie("usuario", $email, time() + (86400 * 1), "/");
-        echo "SEja BEm venindo: ".$_COOKIE['usuario'];*/
+    session_start();
+      for ($i=0; $i < $_SESSION["n_cheques"] ; $i++) { 
+        $val_[$i] = $_POST['valor'."$i"];
+        
+      }
+      $soma_individual = 0;
+      foreach ($val_ as $key => $value) {
+       $soma_individual += $value;
+      }
 
-        session_start();
-            if(($email == "andisu@andisu.com") && ($senha==123)){
-                $_SESSION['usuario'] = $email;
-                $_SESSION['acesso'] = true;
-                if(isset($_SESSION['vet_tempvolta'])){
-                  $_SESSION['vet_tempvolta'].=','.$tempo_volta;
-                }
-                else{
-                  $_SESSION['vet_tempvolta']=$tempo_volta;
-                }
-                $vet_voltas = explode(',', $_SESSION['vet_tempvolta']);
-                $min_valor =min($vet_voltas);
-                
-                foreach ($vet_voltas as $key => $value) {
-                  if($value == $min_valor){
-                    $_indice =$key;
-                  }
-                }
+      echo "TOTAL FORM 1: ".$_SESSION['soma_form1'];
+      echo'</br>';
+      echo "SMONTANTE: ".$soma_individual;
+      echo'</br>';
+      echo'</br>';
 
-                echo "seja bem vindo usuario: ".$_SESSION['usuario'];
-                echo "</br>";
-                echo "Todos os Tempos: ".$_SESSION['vet_tempvolta'];
-                echo "</br>";
-                echo "Melhor Valor(menor tempo ): ".$min_valor;
-                echo "</br>";
-                echo "volta N em que o valor foi registrado".$_indice+1;
-                echo "</br>";
-                echo "<a href='sair.php'>SAIR</a>";
-                
-            }
-            else{
-                header('Location: index.php');
-                exit;
-            }
-        }
-        else{
-            session_start();
-            if($_SESSION["acesso"] == false){
-                header('Location: index.php');
-                exit;
+      if($_SESSION['soma_form1'] < $soma_individual){
+        echo "Diferença Negativa:  ".($_SESSION['soma_form1'] - $soma_individual);
 
-            }
-        }
+      }
+      else if($_SESSION['soma_form1'] == $soma_individual){
+        echo "Lote OK";
+
+      }
+      else{
+        echo "VAlor restante:  ".($_SESSION['soma_form1'] - $soma_individual);
+      }
+      echo'</br>';
     ?>
 
     <!-- Optional JavaScript; choose one of the two! -->

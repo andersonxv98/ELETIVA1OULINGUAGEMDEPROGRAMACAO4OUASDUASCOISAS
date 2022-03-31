@@ -22,26 +22,40 @@
                     <div class="modal-header">
                         <h5 class="modal-title">Acessar</h5>
                     </div>
+                    <?php 
+                         
+                            $n_cheques = $_POST['n_cheques'];
+                            $soma_form1 = $_POST['soma_form1'];
+                          
+                          /*  setcookie("usuario", $email, time() + (86400 * 1), "/");
+                            echo "SEja BEm venindo: ".$_COOKIE['usuario'];*/
+                    
+                            session_start();
+                              
+                                    $_SESSION['n_cheques'] = $n_cheques;
+                                    $_SESSION['acesso'] = true;
+                                    $_SESSION['soma_form1'] = $soma_form1; 
+                            
+
+
+                    
+                    ?>
                     <div class="modal-body">
-                        <form action="form2.php" method="POST">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="n_cheques" class="label-control">
-                                        Informe o numero de cheques
-                                    </label>
-                                    <input type="number" name="n_cheques" id="n_cheques"
-                                        class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="soma_form1" class="label-control">
-                                        informa  a soma total
-                                    </label>
-                                    <input type="number" name="soma_form1" id="soma_form1"
-                                        class="form-control"/>
-                                </div>
-                            </div>
+                        <form action="resposta.php" method="POST">
+                            <?php 
+                            
+                            for ($i=0; $i <$_SESSION['n_cheques'] ; $i++) { 
+                            echo "<div class='row'>";
+                            echo       "<div class='col'>";
+                            echo          "<label for='valor$i' class='label-control'>";
+                            echo             "Informe o valor do cheque";
+                            echo         "</label>";
+                            echo       "<input type='number' name='valor$i' id='valor$i'class='form-control'/>";
+                            echo   "</div>";
+                            echo  "</div>"; 
+                            }
+                            ?>
+                           
                           
                     </div>
                     <div class="modal-footer">
