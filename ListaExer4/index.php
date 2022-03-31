@@ -47,7 +47,7 @@
                                     <label for="tempo_volta" class="label-control">
                                         Informe Tempo da Volta
                                     </label>
-                                    <input type="number" name="tempo_volta" id="tempo_volta"
+                                    <input type="time" name="tempo_volta" id="tempo_volta"
                                         class="form-control"/>
                                 </div>
                             </div>

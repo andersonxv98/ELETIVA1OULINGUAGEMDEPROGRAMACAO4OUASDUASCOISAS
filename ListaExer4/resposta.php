@@ -24,11 +24,28 @@
             if(($email == "andisu@andisu.com") && ($senha==123)){
                 $_SESSION['usuario'] = $email;
                 $_SESSION['acesso'] = true;
-                $_SESSION['tempo_volta'].array_push($tempo_volta);
+                if(isset($_SESSION['vet_tempvolta'])){
+                  $_SESSION['vet_tempvolta'].=','.$tempo_volta;
+                }
+                else{
+                  $_SESSION['vet_tempvolta']=$tempo_volta;
+                }
+                $vet_voltas = explode(',', $_SESSION['vet_tempvolta']);
+                $min_valor =min($vet_voltas);
+                
+                foreach ($vet_voltas as $key => $value) {
+                  if($value == $min_valor){
+                    $_indice =$key;
+                  }
+                }
 
                 echo "seja bem vindo usuario: ".$_SESSION['usuario'];
                 echo "</br>";
-                echo "Todos os Tempos: ".$_SESSION['vetor_tempo'];
+                echo "Todos os Tempos: ".$_SESSION['vet_tempvolta'];
+                echo "</br>";
+                echo "Melhor Valor(menor tempo ): ".$min_valor;
+                echo "</br>";
+                echo "volta N em que o valor foi registrado".$_indice+1;
                 echo "</br>";
                 echo "<a href='sair.php'>SAIR</a>";
                 
