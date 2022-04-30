@@ -5,11 +5,18 @@ abstract class Funcionario{
     private $codigo;
     private $salarioBase;
 
-    function setNome($nome){
+    function c__construct( $nome, $codigo, $salarioBase){
+        $this->setNome($nome);
+        $this->setCodigo($codigo);
+        $this->setSalarioBase($salarioBase);
+     
+    }
+
+   private function setNome($nome){
         $this->nome  = $nome;}
-    function setCodigo($codigo){
+   private function setCodigo($codigo){
         $this->codigo = $codigo;}
-    function setSalarioBase($salarioBase){
+  private  function setSalarioBase($salarioBase){
         $this->salarioBase = $salarioBase;
     
     }
@@ -26,7 +33,7 @@ abstract class Funcionario{
         return $this->salarioBase;
     }
 
-    public function getSalarioLiquido(){
+    public  function getSalarioLiquido(){
         $inss  = $this->salarioBase* 0.1;
         $ir =  0.0;
         if ($this->salarioBase > 2000){
@@ -36,6 +43,11 @@ abstract class Funcionario{
         return $sal_liquido;
     }
 
+    
+    public function GetEverythingInStingFormat(){
+        $_strfuncionario = "Codigo:  ". $this->getCodigo(). "\n  Nome:  ". $this->getNome(). "\n Salario base:  ". $this->getSalarioBase(). "\n  SalarioLiquido:  ". $this->getSalarioLiquido(). "\n";
+        return $_strfuncionario;
+    }
 }
 
 ?>

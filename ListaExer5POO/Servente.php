@@ -1,16 +1,14 @@
 <?php 
-
+require_once("Exer2.php");
 class Servente extends Funcionario{
-    private $insalubridade;
-    
-    function __construct($nome, $salarioBase, $codigo, $insalubridade)
-    {   $insalubridade = 0.05;
-        $this->setNome($nome);
-        $this->setSalarioBase($salarioBase);
-        $this->setCodigo($codigo);
-        $this->insalubridade = $insalubridade;
-
-    }
+    private $insalubridade = 0.05;
+   
+public function __construct($nome, $codigo, $salarioBase){
+    self::setNome($nome);
+    self::setCodigo($codigo);
+    self::setSalarioBase($salarioBase);
+}
+      
 
 }
 ?>
