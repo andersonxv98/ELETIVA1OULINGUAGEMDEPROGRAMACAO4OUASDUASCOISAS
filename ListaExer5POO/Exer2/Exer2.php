@@ -1,9 +1,9 @@
 <?php 
 
 abstract class Funcionario{
-    private $nome;
-    private $codigo;
-    private $salarioBase;
+    protected $nome;
+    protected $codigo;
+    protected $salarioBase;
 
     function setNome($nome){
         $this->nome  = $nome;}
