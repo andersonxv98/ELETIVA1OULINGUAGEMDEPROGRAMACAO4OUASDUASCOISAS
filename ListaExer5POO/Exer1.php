@@ -8,7 +8,7 @@ class Ponto {
 public function __construct($x, $y) {
     $this->y = $y;
     $this->x = $x;
-    self::$contador++;
+    $this->set_contador();
   }
 
  public function get_x() {
@@ -19,29 +19,52 @@ public function __construct($x, $y) {
     return $this->y;
   }
 
-  public function get_contador(){
+  public static function get_contador(){
     
     return self::$contador;
   }
 
-  public function distanciaPontoQlqr($x2, $y2){
+  
+  private static function set_contador(){
+    
+    self::$contador++;
+  }
+
+
+  public function distanciaPontoQlqr(Ponto $P){
    
-    $parte1 = pow(($x2 - $this->x), 2);
-    $parte2 = pow(($y2 - $this->y), 2); 
+    $parte1 = pow(($P->get_x() - $this->x), 2);
+    $parte2 = pow(($P->get_y() - $this->y), 2); 
     $distancia  = sqrt( $parte1  + $parte2 );
+    return $distancia;
+
+
+
+  }
+  function  distanciaDePontos($x2, $y2){
+
+    $P2 =new Ponto($x2, $y2);  
+    
+
+    $distancia = $this->distanciaPontoQlqr($P2);
+    return $distancia;
+  }
+
+
+  public function Distancia3($x1, $x2, $y1, $y2){
+    $this->x = ($x1);
+    $this->y = ($y1);
+
+    $distancia = $this->distanciaDePontos($x2, $y2);
     return $distancia;
 
   }
 }
 
-function  distanciaDePontos(Ponto $P1, Ponto $P2){
 
-    $x2 = $P2->get_x();
-    $y2  = $P2->get_y();
 
-    $distancia = $P1->distanciaPontoQlqr($x2, $y2);
-    return $distancia;
 
-}
+
+
 
 ?>

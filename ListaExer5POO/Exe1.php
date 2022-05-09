@@ -19,9 +19,24 @@
 
         $p1 = new Ponto(2, 3);
         $p2 = new Ponto(5, 1);
+
+        $x2 = $p2->get_x();
+        $y2 = $p2->get_y();
         
-        $distancia =  distanciaDePontos($p1, $p2);
+        $distancia =  $p1->distanciaDePontos($x2, $y2);
         $contador  = $p2->get_contador();
+        
+
+        echo "<br/>";
+        echo "distancia:  ".$distancia;
+        echo "<br/>";
+        echo "Contador:  ".$contador;
+
+        $p3 = new Ponto(20, 13);
+        $p4 = new Ponto(5, 12);
+
+        $distancia =  $p1->Distancia3($p3->get_x(), $p4->get_x(), $p3->get_y(), $p4->get_y());
+        $contador  = $p4->get_contador();
 
         echo "<br/>";
         echo "distancia:  ".$distancia;
