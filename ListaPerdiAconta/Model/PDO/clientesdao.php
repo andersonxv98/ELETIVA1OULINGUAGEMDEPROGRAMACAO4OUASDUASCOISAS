@@ -85,7 +85,7 @@ class ClientesDao{
        */
         $conexao_->conn->exec($sql);
 
-       // $conexao_->close();
+        echo "DELETADO COM SUCESSO";
 
         }catch(Exception $e){
             return "ERROR";

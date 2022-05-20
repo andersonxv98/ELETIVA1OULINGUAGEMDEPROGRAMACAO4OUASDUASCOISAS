@@ -51,15 +51,20 @@ $result=   $pdoclientes->consultar();
 foreach ($result as $row){
     //echo $row[0];
     echo "<tr>
-    <form action="."".">
+   
         <td name="."id"." 
         id="."id".">$row[3]</td>
         <td >$row[0]</td>
         <td>$row[1]</td>
         <td>$row[2]</td>
-        <td><button type="."button"." class="."btn btn-primary ".">Excluir</button></td>
+         <form action=deletar.php>
+            <td><button type="."button"." class="."btn btn-primary ".">Excluir</button></td>
+         </form>
+           <form action="."".">
+        <td><button type="."button"." class="."btn btn-primary ".">Alterar</button></td>
+         </form>
         </tr>
-    </form>
+   
         ";
     
 }

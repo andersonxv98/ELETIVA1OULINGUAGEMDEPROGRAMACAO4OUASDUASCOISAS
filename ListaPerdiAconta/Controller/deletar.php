@@ -8,13 +8,13 @@ $id = $_POST['id'];
 
 
 
-$p = new Clientes(Null, $nome, $email, $idade);
-echo "OBJETO: ".$p->getEmail()."</br>".$p->getNome();
+$p = new Clientes($id, null, null, null);
+//echo "OBJETO: ".$p->getEmail()."</br>".$p->getNome();
 
 $pdoclientes =new  ClientesDao();
 
-$pdoclientes->inserir($p);
-
+//$pdoclientes->inserir($p);
+$pdoclientes->excluir($p);
 $result=   $pdoclientes->consultar();
 
 

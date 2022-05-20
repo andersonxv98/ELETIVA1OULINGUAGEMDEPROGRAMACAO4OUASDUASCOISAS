@@ -10,7 +10,8 @@ class Conexao{
   {
     $host = "localhost";
      $username = "root";
-   $password = "admin";
+   //$password = "admin";
+      $password = "";
      $dbname = 'dbphp';
 
     //echo "Entrou conect DB";
