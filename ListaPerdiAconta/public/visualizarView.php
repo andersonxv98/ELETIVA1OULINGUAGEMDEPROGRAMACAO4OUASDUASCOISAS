@@ -11,27 +11,27 @@
     <title>Produtos CLIENTES</title>
   </head>
   <body class="container">
-    <h1>CLIENTE</h1>
-    <form action="../Controller/indexresponse.php" method="post">
+    <h1>VisualizarCLIENTE</h1>
+    <form action="../Controller/amostra.php" method="post">
       <div class="row">
       
           <div class="col">
             <label for="email" class="label-control">
-              Informe o email 
+              email 
             </label>
             <input type="email" name="email" 
               id="email" class="form-control"/>
-          </div>´
+          </div>
           <div class="col">
             <label for="nome" class="label-control">
-              Informe o nome 
+              nome 
             </label>
             <input type="text" name="nome" 
               id="nome" class="form-control"/>
           </div>
           <div class="col">
             <label for="idade" class="label-control">
-              Informe o idade 
+              idade 
             </label>
             <input type="number" name="idade" 
               id="idade" class="form-control"/>

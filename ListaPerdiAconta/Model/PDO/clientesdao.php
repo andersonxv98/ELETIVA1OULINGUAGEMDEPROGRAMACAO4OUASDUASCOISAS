@@ -11,22 +11,28 @@ class ClientesDao{
     public function inserir(Clientes $c){
         echo "ENTRU CLIENENES DAO";
         $conexao_ = new Conexao();
-        $conn = $conexao_->doConect();
+        
+        //$conexao_  =   $conexao_->ConectDb();
+
         try{
             $nome= $c->getNome();
             $email = $c->getEmail();
             $idade = $c->getIdade();
 
-            $sql = "INSERT INTO 'clientes' ('nome', 'email', 'idade') VALUES (':nome', ':email', ':idade')";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':nome',$nome);
-            $stmt->bindParam(':idade',$idade);
-            $stmt->bindParam(':email',$email);
+            $sql = "INSERT INTO `dbphp`.`clientes` (`nome`, `email`, `idade`) VALUES ('".$nome."', '".$email."', '".$idade."')";
+           // $sql = "INSERT INTO `dbphp`.`clientes` ('nome', 'email', 'idade') VALUES (':nome', ':email', ':idade')";
+            $stmt = $conexao_->conn->prepare($sql);
+            //$stmt->bindParam(':nome',$nome);
+            //$stmt->bindParam(':idade',$idade);
+            //$stmt->bindParam(':email',$email);
+            echo "</br>";
+            echo "TESTES APOS BIND PARAM: ".$nome." ".$idade." ".$email;
+            //echo var_dump($conexao_);
+            $conexao_->conn->exec($sql);
+           // $stmt->execute([$nome,$email,$idade]);
            
-            $stmt->execute();
-           
-
-            $conexao_->close();
+            $stmt->closeCursor();
+           //$conexao_->close();
             //$sth = $dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         } catch (\Exception $e) {
           return false;
@@ -37,24 +43,25 @@ class ClientesDao{
 
     public function alterar(Clientes $c){
         $conexao_ = new Conexao();
-        $conn = $conexao_->doConect();
+       
      
         try{
             $nome= $c->getNome();
             $email = $c->getEmail();
             $idade = $c->getIdade();
             $id = $c->getId();
-        $sql = "UPDATE 'clientes' SET 'nome' = :nome, 'email' = :email, `idade` = :idade WHERE (`id` = ':id')";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nome',$nome);
-        $stmt->bindParam(':idade',$idade);
-        $stmt->bindParam(':email',$email);
-        $stmt->bindParam(':id',$id);
+            $sql = "UPDATE 'clientes' SET 'nome' = ".$nome.", 'email' = ".$email.", `idade` = ".$idade." WHERE (`id` = '".$id."')";
+            //$sql = "UPDATE 'clientes' SET 'nome' = :nome, 'email' = :email, `idade` = :idade WHERE (`id` = ':id')";
+            /*$stmt = $conexao_->conn->prepare($sql);
+            $stmt->bindParam(':nome',$nome);
+            $stmt->bindParam(':idade',$idade);
+            $stmt->bindParam(':email',$email);
+            $stmt->bindParam(':id',$id);
+        
+            $stmt->execute();*/
        
-        $stmt->execute();
-       
-
-        $conexao_->close();
+            $conexao_->conn->exec($sql);
+            //$conexao_->close();
         }
         catch(Exception $e){
             return $e;
@@ -63,22 +70,22 @@ class ClientesDao{
 
     public function excluir(Clientes $c){
         $conexao_ = new Conexao();
-        $conn = $conexao_->doConect();
-
+        
         ////////////////////////////////////////////////////////////////
         try{
 
             $id = $c->getId();
-        $sql = "DELETE FROM 'clientes' WHERE ('id' = ':id')";
+        $sql = "DELETE FROM 'clientes' WHERE ('id' = '".$id."')";
 
-        $stmt = $conn->prepare($sql);
+        /*$stmt = $conexao_->conn->prepare($sql);
 
         $stmt->bindParam(':id',$id);
        
         $stmt->execute();
-       
+       */
+        $conexao_->conn->exec($sql);
 
-        $conexao_->close();
+       // $conexao_->close();
 
         }catch(Exception $e){
             return "ERROR";
@@ -87,22 +94,27 @@ class ClientesDao{
 
     public function consultar(){
         $conexao_ = new Conexao();
-        $conn = $conexao_->doConect();
-        
+       
         try {
-            $sql = "SELECT * FROM clientes";
+            echo "Entrou na func consultar";
+            $sql = "SELECT * FROM dbphp.clientes";
           
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-          
-            // set the resulting array to associative
-            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            foreach(($stmt->fetchAll()) as $k=>$v) {
-              echo $v;
+
+           $result =  $conexao_->conn->query($sql);
+           //$teste = $result->fetchAll();
+           echo "VAR DUMP DA FUNÇÂO CONSULTAR";
+           echo "</br>";
+           // var_dump($teste);
+            $vet_result = [];
+           while ($row = $result->fetch()) {
+            //echo "entrou while";
+            $r = [$row['nome'], $row['email'], $row['idade'], $row['id']];
+            //$e ="  EMAIL: ".$row['email'];
+            //$i ="   IDADE: ".$row['idade'];
+           
+                array_push($vet_result, $r);
             }
-
-
+            return $vet_result;
         } catch (\Exception $th) {
             return $th;
         }
@@ -110,17 +122,19 @@ class ClientesDao{
 
     public function consultarporid($id){
         $conexao_ = new Conexao();
-        $conn = $conexao_->doConect();
+     
 
         try {
             $sql = "SELECT * FROM clientes Where id = :id";
 
-            $stmt = $conn->prepare($sql);
+            /*$stmt = $conexao_->conn->prepare($sql);
             $stmt->bindParam(':id',$id);
-            $stmt->execute();
+            $stmt->execute();*/
+
+            $conexao_->conn->exec($sql);
        
 
-            $conexao_->close();
+          //  $conexao_->close();
 
         } catch (\Exception $th) {
             return $th;

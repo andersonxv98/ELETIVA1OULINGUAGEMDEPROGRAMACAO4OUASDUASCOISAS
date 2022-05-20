@@ -8,7 +8,7 @@ class ProdutosDao{
 
     public function inserir(Produtos $f){
         $conexao_ = new Conexao();
-        $conn = $conexao_->doConect();
+        //$conn = $conexao_->doConect();
         try{
 ;            $nome= $f->getNome();
             $descricao = $f->getdescricao();
@@ -23,7 +23,7 @@ class ProdutosDao{
             $stmt->execute();
            
 
-            $conexao_->close();
+            //$conexao_->close();
 
 
         } catch (\Exception $e) {
@@ -35,8 +35,8 @@ class ProdutosDao{
 
     public function alterar(Produtos $f){
         $conexao_ = new Conexao();
-        $conexao_->doConect();
-        $conn = $conexao_->getConexao();
+        //$conexao_->doConect();
+        //$conn = $conexao_->getConexao();
         try{
             $nome= $f->getNome();
             $descricao = $f->getdescricao();
@@ -44,8 +44,8 @@ class ProdutosDao{
             $id = $f->getId();
         $sql = "UPDATE 'produtos' SET 'nome' = :nome, 'descricao' = :descricao, `valor` = :valor WHERE (`id` = ':id')";
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nome',$nome);
+        //$stmt = $conn->prepare($sql);
+        /*$stmt->bindParam(':nome',$nome);
         $stmt->bindParam(':descricao',$descricao);
         $stmt->bindParam(':valor',$valor);
         $stmt->bindParam(':id',$id);
@@ -54,7 +54,7 @@ class ProdutosDao{
        
 
         $conexao_->close();
-
+*/
 
         }
         catch(Exception $e){
@@ -64,20 +64,20 @@ class ProdutosDao{
 
     public function excluir(Produtos $f){
         $conexao_ = new Conexao();
-        $conexao_->doConect();
-        $conn = $conexao_->getConexao();
+       // $conexao_->doConect();
+        //$conn = $conexao_->getConexao();
 
         try{
             
             $id = $f->getId();
         $sql = "DELETE FROM 'produtos' WHERE ('id' = ':id')";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id',$id);
+       // $stmt = $conn->prepare($sql);
+       /* $stmt->bindParam(':id',$id);
        
         $stmt->execute();
        
 
-        $conexao_->close();
+        $conexao_->close();*/
 
         }catch(Exception $e){
             return "ERROR";
