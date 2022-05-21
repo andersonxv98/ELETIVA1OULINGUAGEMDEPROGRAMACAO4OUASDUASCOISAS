@@ -2,30 +2,30 @@
 <?php
 
 require_once "conexao.php";
-require_once "../Entity/produto.php";
+
+//require_once "../Entity/cliente.php";
+
 
 class ProdutosDao{
+  
+    public function inserir(Produtos $p){
+        echo "ENTRU CLIENENES DAO";
+        $ponexao_ = new Conexao();
 
-    public function inserir(Produtos $f){
-        $conexao_ = new Conexao();
-        //$conn = $conexao_->doConect();
         try{
-;            $nome= $f->getNome();
-            $descricao = $f->getdescricao();
-            $valor = $f->getvalor();
-            $sql = "INSERT INTO 'produtos' ('nome', 'descricao', 'valor') VALUES (':nome', ':descricao', ':valor')";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':nome',$nome);
-            $stmt->bindParam(':descricao',$descricao);
-            $stmt->bindParam(':valor',$valor);
+            $nome= $p->getNome();
+            $descricao = $p->getdescricao();
+            $valor = $p->getvalor();
+            $sql = "INSERT INTO `dbphp`.`Produtos` (`nome`, `descricao`, `valor`) VALUES (:nome, :descricao, :valor)";
            
-            $stmt->execute();
+            $stmt = $ponexao_->conn->prepare($sql);
+            $stmt->bindValue(':nome',$nome);
+            $stmt->bindValue(':valor',$valor);
+            $stmt->bindValue(':descricao',$descricao);
            
-
-            //$conexao_->close();
-
-
+           
+           return   $stmt->execute();
+           
         } catch (\Exception $e) {
           return false;
         }
@@ -33,28 +33,24 @@ class ProdutosDao{
 
     }
 
-    public function alterar(Produtos $f){
-        $conexao_ = new Conexao();
-        //$conexao_->doConect();
-        //$conn = $conexao_->getConexao();
+    public function alterar(Produtos $p){
+        $ponexao_ = new Conexao();
+       
+     
         try{
-            $nome= $f->getNome();
-            $descricao = $f->getdescricao();
-            $valor = $f->getvalor();
-            $id = $f->getId();
-        $sql = "UPDATE 'produtos' SET 'nome' = :nome, 'descricao' = :descricao, `valor` = :valor WHERE (`id` = ':id')";
-
-        //$stmt = $conn->prepare($sql);
-        /*$stmt->bindParam(':nome',$nome);
-        $stmt->bindParam(':descricao',$descricao);
-        $stmt->bindParam(':valor',$valor);
-        $stmt->bindParam(':id',$id);
-       
-        $stmt->execute();
-       
-
-        $conexao_->close();
-*/
+            $nome= $p->getNome();
+            $descricao = $p->getdescricao();
+            $valor = $p->getvalor();
+            $id = $p->getId();
+           
+            $sql = "UPDATE 'Produtos' SET `nome` = :nome, `descricao` = :descricao, `valor` = :valor WHERE (`id` = :id)";
+            $stmt = $ponexao_->conn->prepare($sql);
+            $stmt->bindValue(':nome',$nome);
+            $stmt->bindValue(':valor',$valor);
+            $stmt->bindValue(':descricao',$descricao);
+            $stmt->bindValue(':id',$id);
+        
+           return $stmt->execute();
 
         }
         catch(Exception $e){
@@ -62,63 +58,54 @@ class ProdutosDao{
         }
     }
 
-    public function excluir(Produtos $f){
-        $conexao_ = new Conexao();
-       // $conexao_->doConect();
-        //$conn = $conexao_->getConexao();
-
+    public function excluir(Produtos $p){
+        $ponexao_ = new Conexao();
+        
         try{
-            
-            $id = $f->getId();
-        $sql = "DELETE FROM 'produtos' WHERE ('id' = ':id')";
-       // $stmt = $conn->prepare($sql);
-       /* $stmt->bindParam(':id',$id);
-       
-        $stmt->execute();
-       
+        $id = $p->getId();
+        $sql = "DELETE FROM `Produtos` WHERE (id = :id)";
 
-        $conexao_->close();*/
+        $stmt = $ponexao_->conn->prepare($sql);
 
+        $stmt->bindParam(':id',$id);
+        echo "DELETADO COM SUCESSO";
+       return $stmt->execute();
         }catch(Exception $e){
             return "ERROR";
         }
     }
 
     public function consultar(){
-        $conexao_ = new Conexao();
-        $conexao_->doConect();
-        $conn = $conexao_->getConexao();
+        $ponexao_ = new Conexao();
+       
         try {
-            $sql = "SELECT * FROM produtos";
+            $sql = "SELECT * FROM dbphp.Produtos";
+          
 
-            //$stmt->bindParam(':id',$id);
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
+           $result =  $ponexao_->conn->query($sql);
+         
+            $vet_result = [];
+           while ($row = $result->fetch()) {
+            
+            $r = [$row['nome'], $row['descricao'], $row['valor'], $row['id']];
            
-    
-            $conexao_->close();
-
+                array_push($vet_result, $r);
+            }
+            return $vet_result;
         } catch (\Exception $th) {
             return $th;
         }
     }
 
     public function consultarporid($id){
-        $conexao_ = new Conexao();
-        $conexao_->doConect();
-        $conn = $conexao_->getConexao();
-        try {
-            
-            //$id = $f->getId();
-            $sql = "SELECT * FROM produtos Where id = :id";
+        $ponexao_ = new Conexao();
+     
 
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id',$id);
-           
-            $stmt->execute();
-           
-    
-            $conexao_->close();
+        try {
+            $sql = "SELECT * FROM Produtos Where id = :id";
+
+            $ponexao_->conn->exec($sql);
+       
 
         } catch (\Exception $th) {
             return $th;

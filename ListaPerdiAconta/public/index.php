@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,6 +12,9 @@
   </head>
   <body>
     <h1>Visualizar CLienterssd</h1>
+  
+    <a href="insertView.php" style="text-decoration:none"><button type="button" class="btn btn-primary mb-2">Criar novo Registro</button></a>
+    
     <table class="table table-dark table-striped">
   <thead>
     <tr >
@@ -29,16 +31,7 @@
 require_once("../Model/Entity/cliente.php");
 require_once("../Model/Entity/produto.php");
 require_once("../Model/PDO/clientesdao.php");
-/*$email= $_POST['email'];
-$nome = $_POST['nome'];
-$idade = $_POST['idade'];
-*/
-
-//echo "TESTE INSIDE INDEX RESPONSE: ".$email."\n".$nome."\n".$idade."\n";
-
-//$p = new Clientes(Null, $nome, $email, $idade);
-/*echo "OBJETO: ".$p->getEmail()."</br>".$p->getNome();
-*/
+require_once("../Controller/ClientesController.php");
 $pdoclientes =new  ClientesDao();
 
 //$pdoclientes->inserir($p);
@@ -57,29 +50,22 @@ foreach ($result as $row){
         <td >$row[0]</td>
         <td>$row[1]</td>
         <td>$row[2]</td>
-         <form action=deletar.php>
-            <td><button type="."button"." class="."btn btn-primary ".">Excluir</button></td>
-         </form>
-           <form action="."".">
-        <td><button type="."button"." class="."btn btn-primary ".">Alterar</button></td>
-         </form>
+
+
+        <td>
+        <form method="."post"." action="."../Controller/deletarCliente.php".">
+            <input type="."button"." class="."btn btn-primary"."name="."Excluir"." value="."Excluir"." onclick="."deletarCliente()".">
+        </form>
+        </td>
+        
+        <td>
+        <input type="."button"." class="."btn btn-primary"."name="."deletar"." value="."Deletar"." onclick="."deletarCliente()".">
+        </td>
+         
+        
+
         </tr>
    
         ";
     
 }
-/*foreach ($result as $key => $value) {
-    echo "TESTE: ".$key."  -----   ".$value;
-    echo "</br>";
-}*/
-?>
-
-   
-  </tbody>
-</table>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      </body>
-</html>

@@ -12,7 +12,7 @@
   </head>
   <body class="container">
     <h1>CLIENTE</h1>
-    <form action="../Controller/indexresponse.php" method="post">
+    <form action="../Controller/ClientesController.php" method="post">
       <div class="row">
       
           <div class="col">
