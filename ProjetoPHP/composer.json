@@ -1,0 +1,15 @@
+{
+    "name": "aluno/projeto-php",
+    "autoload": {
+        "psr-4": {
+            "C://Users//ander//Documents//GitHub//ELETIVA1OULINGUAGEMDEPROGRAMACAO4OUASDUASCOISAS//ProjetoPHP": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ANdisu ",
+            "email": "Andisu@andisu.com"
+        }
+    ],
+    "require": {}
+}
