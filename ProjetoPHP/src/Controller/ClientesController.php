@@ -8,11 +8,13 @@ use Aluno\ProjetoPhp\Model\Entity\Clientes;
 class ClientesController{
 
     public static function abrirFormularioInserir(){
-        require_once "../src/View/inserir_cliente.php";
+        require_once "../View/inserir_cliente.php";
     }
 
     public static function MostrarClientes(){
-        require_once "C:\Users\ander\Documents\GitHub\ELETIVA1OULINGUAGEMDEPROGRAMACAO4OUASDUASCOISAS\ListaPerdiAconta\Controller\amostra.php";
+        $arra = [1, 2, 3];
+        var_dump($arra);
+        require_once "../View/mostrar_cliente.php";
     }
 
     public static function inserirCliente(){
@@ -25,6 +27,26 @@ class ClientesController{
             return "Inserido com sucesso!";
         } else {
             return "Erro ao inserir";
+        }
+    }
+
+    public static function alterarCliente(Clientes $cliente){
+     
+        $dao = new ClientesDAO();
+        if ($dao->alterar($cliente)){
+            return "Inserido com sucesso!";
+        } else {
+            return "Erro ao inserir";
+        }
+    }
+
+    public static function removerCliente($id){
+      
+        $dao = new ClientesDAO();
+        if ($dao->excluir($id)){
+            return "Removido com success";
+        } else {
+            return "Erro ao Remover";
         }
     }
 

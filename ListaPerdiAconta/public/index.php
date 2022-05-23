@@ -69,3 +69,10 @@ foreach ($result as $row){
         ";
     
 }
+
+?>
+
+  </tbody>
+    </table>
+  </body>
+</html>

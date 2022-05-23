@@ -5,10 +5,15 @@ require_once __DIR__.'/vendor/autoload.php';
 //Aqui a gente recupera o que o usuário digitou e qual 
 //método HTTP ele utilizou
 $method = $_SERVER['REQUEST_METHOD'];
-$path = $_SERVER['PATH_INFO'];
+$path = trim($_SERVER['REQUEST_URI'], '/');
+
+if (strpos($path, 'ProjetoPHP/') >= 0) {
+    //die(substr($path, 10)); -> /ola-mundo
+    $path = substr($path, 10);
+}
 
 //Instanciar classe Router
-$router = new \Users\ander\Documents\GitHub\ELETIVA1OULINGUAGEMDEPROGRAMACAO4OUASDUASCOISAS\ProjetoPHP\Router($method, $path);
+$router = new Aluno\ProjetoPhp\Router($method, $path);
 
 //ADICIONAR AS ROTAS VÁLIDAS ABAIXO
 
@@ -27,6 +32,10 @@ $router->get('/cliente/novo',
 
 $router->post('/cliente/inserir',
 'Aluno\ProjetoPhp\Controller\ClientesController::inserirCliente');
+
+$router->post('/cliente/mostra',
+'Aluno\ProjetoPhp\Controller\ClientesController::MostrarClientes');
+
 
 //ADICIONAR AS ROTAS VÁLIDAS ACIMA
 

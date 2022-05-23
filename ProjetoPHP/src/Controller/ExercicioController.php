@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Aluno\ProjetoPhp\Controller;
+namespace Aluno\ProjetoPhp\Controller\exemplo;
 
 
 class ExercicioController
 {
 
     public static function exibir(){
-        require_once("../src/View/exemplo.php");
+        require_once("../View/exemplo.php");
     }
 
 
