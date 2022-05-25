@@ -14,7 +14,25 @@
   </head>
   <body>
     <h1>Visualizar CLientes</h1>
-   
+
+    <?php if ($resposta){
+            echo "<div class="."alert alert-success alert-dismissible fade show"." role="."alert".">
+            <strong>Inserido com sucesso CIlindro!</strong> You should check in on some of those fields below.
+            <button type="."button"." class="."close"." data-dismiss="."alert"." aria-label="."Close".">
+              <span aria-hidden="."true".">&times;</span>
+            </button>
+          </div>";
+    }
+      else{
+        "<div class="."alert alert-success alert-dismissible fade show"." role="."alert".">
+            <strong> 1001 01 0101 0 10 10 01 01 AMÉM!  - BENDER (FUTURAMA)!</strong> You should check in on some of those fields below.
+            <button type="."button"." class="."close"." data-dismiss="."alert"." aria-label="."Close".">
+              <span aria-hidden="."true".">&times;</span>
+            </button>
+          </div>";
+
+      }
+    ?>
     <button type="button" class="btn btn-primary mb-2">Criar novo Registro </button>
     
     <table class="table table-dark table-striped">
