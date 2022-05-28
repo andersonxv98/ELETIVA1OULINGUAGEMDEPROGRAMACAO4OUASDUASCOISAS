@@ -23,6 +23,11 @@ class ClientesController
         require_once "../View/alterar_cliente.php";
     }
 
+    public static function editarCliente($params){
+        $resultado = self::$dao->consultarPorId($params[1]);
+        require_once "../View/alterar_cliente.php";
+    }
+
     public static function inserirCliente(){
         $cliente = new Clientes();
         $cliente->setEmail($_POST['email']);
@@ -38,14 +43,20 @@ class ClientesController
         self::MostrarClientes();
     }
 
-    public static function alterarCliente(Clientes $cliente){
+    public static function editarCliente(Clientes $params){
      
-        $dao = new ClientesDAO();
-        if ($dao->alterar($cliente)){
-            return "Inserido com sucesso!";
+         $cliente = new Clientes();
+        $cliente->setEmail($_POST['email']);
+        $cliente->setIdade($_POST['idade']);
+        $cliente->setNome($_POST['nome']);
+        $cliente->setId($params[1]);
+        if (self::$dao->alterar($cliente)){
+            $resposta = true;
+
         } else {
-            return "Erro ao inserir";
+            $resposta = false;
         }
+        self::MostrarClientes();
     }
 
     public static function removerCliente($id){

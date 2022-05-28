@@ -40,7 +40,7 @@ $router->get('/cliente/alterar/{id}',
 'Aluno\ProjetoPhp\Controller\ClientesController::abrirFormularioAlterar');
 
 $router->get('/cliente/editar/{id}',
-'Aluno\ProjetoPhp\Controller\ClientesController::alterarCliente');
+'Aluno\ProjetoPhp\Controller\ClientesController::editarCliente');
 
 
 
