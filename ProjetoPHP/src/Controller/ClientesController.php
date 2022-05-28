@@ -5,16 +5,22 @@ namespace Aluno\ProjetoPhp\Controller;
 use Aluno\ProjetoPhp\Model\DAO\ClientesDAO;
 use Aluno\ProjetoPhp\Model\Entity\Clientes;
 
-class ClientesController{
+class ClientesController
+{
+    private static $dao = new ClientesDAO();
 
     public static function abrirFormularioInserir(){
         require_once "../View/inserir_cliente.php";
     }
 
     public static function MostrarClientes(){
-        $arra = [1, 2, 3];
-        var_dump($arra);
+        $resposta  = self::$dao->consultar();
         require_once "../View/mostrar_cliente.php";
+    }
+
+    public static function abrirFormularioAlterar($params){
+        $resultado = self::$dao->consultarPorId($params[1]);
+        require_once "../View/alterar_cliente.php";
     }
 
     public static function inserirCliente(){
@@ -22,14 +28,14 @@ class ClientesController{
         $cliente->setEmail($_POST['email']);
         $cliente->setIdade($_POST['idade']);
         $cliente->setNome($_POST['nome']);
-        $dao = new ClientesDAO();
-        if ($dao->inserir($cliente)){
+       
+        if (self::$dao->inserir($cliente)){
             $resposta = true;
 
         } else {
             $resposta = false;
         }
-        require_once "../src/view/Listar_licnetes.php";
+        self::MostrarClientes();
     }
 
     public static function alterarCliente(Clientes $cliente){
@@ -51,5 +57,5 @@ class ClientesController{
             return "Erro ao Remover";
         }
     }
-
+    
 }

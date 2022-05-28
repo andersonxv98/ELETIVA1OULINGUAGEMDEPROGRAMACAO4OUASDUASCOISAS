@@ -58,7 +58,7 @@ class ClientesDAO{
             $sql = "SELECT * FROM clientes WHERE id = :id";
             $p = Conexao::conectar()->prepare($sql);
             $p->bindValue(":id", $id);
-            return $p->execute();
+            return $p->fetch();
         } catch(\Exception $e){
             return false;
         }

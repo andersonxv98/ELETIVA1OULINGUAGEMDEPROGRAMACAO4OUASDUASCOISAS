@@ -45,9 +45,22 @@
     </tr>
   </thead>
   <tbody>
+    
   <?php
-
-    ?>
+      while ($linha = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
+        <tr>
+          <td>$linha['nome']</td>
+          <td>$linha['email']</td>
+          <td>$linha['idade']</td>
+          <td>
+            <a href="/cliente/alterar/<?php $linha['id'] //Lembrar de colocar barra no caminho , para n concatenar
+              
+            ?>" class="btn btn-success">Alterar</a>
+            <a class="btn btn-danger">Excluir</a>
+          </td>
+      </tr>
+     <?php } ?>
+  
 
 
 

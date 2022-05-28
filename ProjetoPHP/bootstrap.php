@@ -36,6 +36,9 @@ $router->post('/cliente/inserir',
 $router->post('/cliente/mostra',
 'Aluno\ProjetoPhp\Controller\ClientesController::MostrarClientes');
 
+$router->get('/cliente/alterar/{id}',
+'Aluno\ProjetoPhp\Controller\ClientesController::abrirFormularioAlterar');
+
 
 //ADICIONAR AS ROTAS VÁLIDAS ACIMA
 
