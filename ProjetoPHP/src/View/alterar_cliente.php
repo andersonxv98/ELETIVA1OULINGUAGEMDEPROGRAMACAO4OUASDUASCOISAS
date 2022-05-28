@@ -13,7 +13,7 @@
   <body>
     <h1>ALerar Cliente</h1>
 
-    <form action="/cliente/editar/{<?php  echo $params[1] ?>}" method="post">
+    <form action="/cliente/editar/" method="post">
         <div class="row">
             <div class="col-5">
                 <label for="nome" class="label-control">
