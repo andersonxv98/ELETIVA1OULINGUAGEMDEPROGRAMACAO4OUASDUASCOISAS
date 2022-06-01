@@ -43,7 +43,7 @@ class ClientesController
         self::MostrarClientes();
     }
 
-    public static function editarCliente(Clientes $params){
+    public static function editarClientes(Clientes $params){
      
          $cliente = new Clientes();
         $cliente->setEmail($_POST['email']);

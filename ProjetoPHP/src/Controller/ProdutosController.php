@@ -15,6 +15,17 @@ class ProdutosController{
         require_once "../View/mostrar_produtos.php";
     }
 
+    public static function abrirFormularioAlterar($params){
+        $resultado = self::$dao->consultarPorId($params[1]);
+        require_once "../View/alterar_cliente.php";
+    }
+
+    public static function editarProduto($params){
+        $resultado = self::$dao->consultarPorId($params[1]);
+        require_once "../View/alterar_cliente.php";
+    }
+
+
     public static function inserirproduto(){
         $nome  = $_POST['nome'];
         $descricao =  $_POST['descricao'];
