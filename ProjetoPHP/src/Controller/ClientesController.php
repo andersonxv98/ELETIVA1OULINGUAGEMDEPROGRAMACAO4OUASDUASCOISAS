@@ -10,25 +10,26 @@ class ClientesController
    
 
     public static function abrirFormularioInserir(){
-        require_once "../View/inserir_cliente.php";
+        require_once "../src/View/inserir_cliente.php";
     }
 
-    public static function MostrarClientes(){
+    public static function MostrarClientes($resposta){
         $dao = new ClientesDAO();
         $dao->consultar();
-        require_once "../View/mostrar_cliente.php";
+        $resposta;
+        require_once "../src/View/mostrar_cliente.php";
     }
 
     public static function abrirFormularioAlterar($params){
         $dao = new ClientesDAO();
         $dao->consultarPorId($params[1]);
-        require_once "../View/alterar_cliente.php";
+        require_once "../src/View/alterar_cliente.php";
     }
 
     public static function editarCliente($params){
         $dao = new ClientesDAO();
         $dao->consultarPorId($params[1]);
-        require_once "../View/alterar_cliente.php";
+        require_once "../src/View/alterar_cliente.php";
     }
 
     public static function inserirCliente(){
@@ -44,7 +45,7 @@ class ClientesController
         } else {
             $resposta = false;
         }
-        self::MostrarClientes();
+        self::MostrarClientes($resposta);
     }
 
     public static function editarClientes(Clientes $params){
@@ -60,17 +61,17 @@ class ClientesController
         } else {
             $resposta = false;
         }
-        self::MostrarClientes();
+        self::MostrarClientes($resposta);
     }
 
-    public static function removerCliente($id){
-      
+    public static function excluirCliente($params){
         $dao = new ClientesDAO();
-        if ($dao->excluir($id)){
-            return "Removido com success";
+        if ($dao->excluir($params[1])){
+            $resposta = true;
         } else {
-            return "Erro ao Remover";
+            $resposta = false;
         }
+        ClientesController::MostrarClientes($resposta);
     }
     
 }

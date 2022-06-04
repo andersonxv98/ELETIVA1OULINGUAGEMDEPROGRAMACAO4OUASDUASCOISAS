@@ -1,4 +1,4 @@
-<?php var_dump($arra); ?>
+<?php  ?>
 <!doctype html>
 
 <html lang="en">
@@ -33,7 +33,7 @@
 
       }
     ?>
-    <button type="button" class="btn btn-primary mb-2">Criar novo Registro PRoduto </button>
+    <a href="novo"><button type="button" class="btn btn-primary mb-2">Criar novo Registro PRoduto </button></a>
     
     <table class="table table-dark table-striped">
   <thead>
@@ -47,7 +47,7 @@
   <tbody>
     
   <?php
-      while ($linha = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
+      while ($linha = $resposta->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
           <td>$linha['nome']</td>
           <td>$linha['descricao']</td>
@@ -56,7 +56,7 @@
             <a href="/produto/alterar/<?php $linha['id'] //Lembrar de colocar barra no caminho , para n concatenar
               
             ?>" class="btn btn-success">Alterar</a>
-            <a class="btn btn-danger">Excluir</a>
+            <a class="btn btn-danger" href="/produto/excluir/<?php $linha['id']?>">Excluir</a>
           </td>
       </tr>
      <?php } ?>

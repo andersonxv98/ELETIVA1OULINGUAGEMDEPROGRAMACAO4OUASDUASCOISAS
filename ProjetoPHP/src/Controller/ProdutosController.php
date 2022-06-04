@@ -8,25 +8,27 @@ use Aluno\ProjetoPhp\Model\Entity\Produtos;
 class ProdutosController{
 
     public static function abrirFormularioInserir(){
-        require_once "../View/inserir_produto.php";
+        require_once "../src/View/inserir_produto.php";
     }
 
-    public static function MostrarProdutos(){
+    public static function MostrarProdutos($resposta){
         $dao = new ProdutosDAO();
         $dao->consultar();
-        require_once "../View/mostrar_produto.php";
+        $resposta;
+        require_once "../src/View/mostrar_produto.php";
+
     }
 
     public static function abrirFormularioAlterar($params){
         $dao = new ProdutosDAO();
         $dao->consultarPorId($params[1]);
-        require_once "../View/alterar_produto.php";
+        require_once "../src/View/alterar_produto.php";
     }
 
     public static function editarProduto($params){
         $dao = new ProdutosDAO();
         $dao->consultarPorId($params[1]);
-        require_once "../View/alterar_produto.php";
+        require_once "../src/View/alterar_produto.php";
     }
 
     public static function inserirProduto(){
@@ -42,7 +44,7 @@ class ProdutosController{
         } else {
             $resposta = false;
         }
-        self::MostrarProdutos();
+        self::MostrarProdutos($resposta);
     }
 
     public static function editarProdutos(Produtos $params){
@@ -58,16 +60,16 @@ class ProdutosController{
         } else {
             $resposta = false;
         }
-        self::MostrarProdutos();
+        self::MostrarProdutos($resposta);
     }
 
-    public static function removerProdutos($id){
-      
+    public static function excluirCliente($params){
         $dao = new ProdutosDAO();
-        if ($dao->excluir($id)){
-            return "Removido com success";
+        if ($dao->excluir($params[1])){
+            $resposta = true;
         } else {
-            return "Erro ao Remover";
+            $resposta = false;
         }
+        ProdutosController::MostrarProdutos($resposta);
     }
 }

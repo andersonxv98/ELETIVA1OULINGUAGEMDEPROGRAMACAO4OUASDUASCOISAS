@@ -52,6 +52,11 @@ $router->get('/produto/alterar/{id}',
 $router->get('/produto/editar/{id}',
 'Aluno\ProjetoPhp\Controller\PtodutosController::editarProduto');
 
+$router->get('/cliente/excluir/{id}',
+'Aluno\ProjetoPhp\Controller\ClientesController::excluirCliente');
+
+$router->get('/produto/excluir/{id}',
+'Aluno\ProjetoPhp\Controller\ProdutosController::excluirProduto');
 
 //ADICIONAR AS ROTAS VÁLIDAS ACIMA
 
