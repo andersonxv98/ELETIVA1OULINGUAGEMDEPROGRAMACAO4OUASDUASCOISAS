@@ -24,17 +24,17 @@
             </div>
             <div class="col-5">
                 <label for="number" class="label-control">
-                    Informe o valor:
-                </label>
-                <input type="number" class="form-control"
-                        name="valor" id="valor" value="<?php $resultado['valor'] ?>/>
-            </div>
-            <div class="col-2">
-                <label for="idade" class="label-control">
                     Informe a descricao:
                 </label>
                 <input type="text" class="form-control"
                         name="descricao" id="descricao" value="<?php $resultado['descricao'] ?>/>
+            </div>
+            <div class="col-2">
+                <label for="idade" class="label-control">
+                    Informe o valor:
+                </label>
+                <input type="number" class="form-control"
+                        name="valor" id="valor" value="<?php $resultado['valor'] ?>/>
             </div>
         </div>
         <div class="row">

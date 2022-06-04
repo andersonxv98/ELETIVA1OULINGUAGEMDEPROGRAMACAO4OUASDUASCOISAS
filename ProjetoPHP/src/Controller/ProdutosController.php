@@ -8,51 +8,60 @@ use Aluno\ProjetoPhp\Model\Entity\Produtos;
 class ProdutosController{
 
     public static function abrirFormularioInserir(){
-        require_once "../src/View/inserir_produto.php";
+        require_once "../View/inserir_produto.php";
     }
 
     public static function MostrarProdutos(){
-        require_once "../View/mostrar_produtos.php";
+        $dao = new ProdutosDAO();
+        $dao->consultar();
+        require_once "../View/mostrar_produto.php";
     }
 
     public static function abrirFormularioAlterar($params){
-        $resultado = self::$dao->consultarPorId($params[1]);
-        require_once "../View/alterar_cliente.php";
+        $dao = new ProdutosDAO();
+        $dao->consultarPorId($params[1]);
+        require_once "../View/alterar_produto.php";
     }
 
     public static function editarProduto($params){
-        $resultado = self::$dao->consultarPorId($params[1]);
-        require_once "../View/alterar_cliente.php";
+        $dao = new ProdutosDAO();
+        $dao->consultarPorId($params[1]);
+        require_once "../View/alterar_produto.php";
     }
 
-
-    public static function inserirproduto(){
-        $nome  = $_POST['nome'];
-        $descricao =  $_POST['descricao'];
-        $valor = $_POST['valor'];
-        $produto = new Produtos(null,$nome, $descricao, $valor);
-                                                                            /*$produto->setNome();
-                                                                            $produto->setdescricao();
-                                                                            $produto->setvalor();*/
-        $dao = new ProdutosDAO();
+    public static function inserirProduto(){
+         $dao = new ProdutosDAO();
+        $produto = new Produtos();
+        $produto->setdescricao($_POST['descricao']);
+        $produto->setvalor($_POST['valor']);
+        $produto->setNome($_POST['nome']);
+       
         if ($dao->inserir($produto)){
-            return "Inserido com sucesso!";
+            $resposta = true;
+
         } else {
-            return "Erro ao inserir";
+            $resposta = false;
         }
+        self::MostrarProdutos();
     }
 
-    public static function alterarproduto(Produtos $produto){
-     
+    public static function editarProdutos(Produtos $params){
         $dao = new ProdutosDAO();
+         $produto = new Produtos();
+        $produto->setdescricao($_POST['descricao']);
+        $produto->setvalor($_POST['valor']);
+        $produto->setNome($_POST['nome']);
+        $produto->setId($params[1]);
         if ($dao->alterar($produto)){
-            return "Inserido com sucesso!";
+            $resposta = true;
+
         } else {
-            return "Erro ao inserir";
+            $resposta = false;
         }
+        self::MostrarProdutos();
     }
 
-    public static function removerproduto($id){
+    public static function removerProdutos($id){
       
         $dao = new ProdutosDAO();
         if ($dao->excluir($id)){

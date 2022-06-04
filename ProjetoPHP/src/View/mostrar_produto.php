@@ -10,10 +10,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Visualizar CLientes</title>
+    <title>Visualizar Produtos</title>
   </head>
   <body>
-    <h1>Visualizar CLientes</h1>
+    <h1>Visualizar Produtos</h1>
 
     <?php if ($resposta){
             echo "<div class="."alert alert-success alert-dismissible fade show"." role="."alert".">
@@ -33,14 +33,14 @@
 
       }
     ?>
-    <button type="button" class="btn btn-primary mb-2">Criar novo Registro </button>
+    <button type="button" class="btn btn-primary mb-2">Criar novo Registro PRoduto </button>
     
     <table class="table table-dark table-striped">
   <thead>
     <tr >
       <th scope="col">Nome</th>
-      <th scope="col">Email</th>
-      <th scope="col">Idade</th>
+      <th scope="col">descricao</th>
+      <th scope="col">valor</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -50,10 +50,10 @@
       while ($linha = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
           <td>$linha['nome']</td>
-          <td>$linha['email']</td>
-          <td>$linha['idade']</td>
+          <td>$linha['descricao']</td>
+          <td>$linha['valor']</td>
           <td>
-            <a href="/cliente/alterar/<?php $linha['id'] //Lembrar de colocar barra no caminho , para n concatenar
+            <a href="/produto/alterar/<?php $linha['id'] //Lembrar de colocar barra no caminho , para n concatenar
               
             ?>" class="btn btn-success">Alterar</a>
             <a class="btn btn-danger">Excluir</a>

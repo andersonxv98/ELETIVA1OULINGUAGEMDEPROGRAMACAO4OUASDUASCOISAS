@@ -8,16 +8,16 @@ class   Produtos{
     private $descricao;
     private $valor;
 
-    private function setId($id){
+    public function setId($id){
         $this->id = $id;
     }
-    private function setvalor($valor){
+    public function setvalor($valor){
         $this->valor = $valor;
     }
-    private function setdescricao($descricao){
+    public function setdescricao($descricao){
         $this->descricao = $descricao;
     }
-    private function setNome($nome){
+    public function setNome($nome){
         $this->nome = $nome;
     }
 
@@ -36,12 +36,7 @@ class   Produtos{
         return $this->nome ;
     }
 
-    public function __construct($id, $nome, $descricao, $valor){
-        $this->setId($id);
-        $this->setNome($nome);
-        $this->setdescricao($descricao);
-        $this->setvalor($valor);
-    }
+   
 
 }
 
